@@ -1,31 +1,33 @@
 import requests
 import os
 from decouple import config
+from urllib.parse import urlsplit
+from download import download_astronomy_photo
 
 
-def EPIC(limit, nasa_api_key):
-        url_epic = f"https://api.nasa.gov/EPIC/api/natural/images?api_key={nasa_api_key}"
-        response = requests.get(url_epic)
-        response_data = response.json()
-        os.makedirs("EPIC_images", exist_ok=True)
-        for idx, item in enumerate(response_data):
-                if idx >= limit:
-                        break
-
-                image_name = item.get("image")
-                date = item.get("date")
-                year, month, day = date.split()[0].split('-')
-                created_url = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{image_name}.png?api_key={nasa_api_key}"
-                image_data = requests.get(created_url).content
-                image_name = os.path.join('EPIC_images', f"nasa_epic_{idx}.png")
-                with open(image_name, 'wb') as file:
-                    file.write(image_data)
+def astronomy_picture_of_the_day(nasa_api_key, count):
+        params = {
+                "api_key": nasa_api_key,
+                "count": count
+        }
+        url = f'https://api.nasa.gov/planetary/apod'
+        nasa_apod = "https://apod.nasa.gov/apod/image/2506/IC2177SeagullLRGB-APOD2048.jpg"
+        response = requests.get(url, params=params)
+        response.raise_for_status()
+        json_information = response.json()
+        os.makedirs('nasa_images', exist_ok=True)
+        for index_photo, astronomy_photo in enumerate(json_information):
+            image_url = astronomy_photo.get('url')
+            if image_url and (image_url.endswith(".jpg") or image_url.endswith(".png")):
+                download_astronomy_photo(image_url, index_photo)
 
 
 def main():
-    nasa_api_key = config("NASA_API_KEY")
-    EPIC(10, nasa_api_key)
+        count = 30
+        nasa_api_key = config("NASA_API_KEY")
+        astronomy_picture_of_the_day(nasa_api_key, count)
 
-
+        
 if __name__ == '__main__':
     main()
+

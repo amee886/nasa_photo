@@ -16,15 +16,19 @@ git clone https://github.com/amee886/nasa_photo.git cd nasa_photo
 
 ## 2.Описание функций
 -**fetch_spacex_last_launch**(launch_id): скачивает изображения запуска ракеты из другого репозитория используя id запуска.
+
 <img width="418" height="126" alt="image" src="https://github.com/user-attachments/assets/c6d1db04-e56d-457c-b1e3-b28ab5f0a2c7" />
 
 -**APOD**(nasa_api_key): скачивает лучшие снимки дня с сайта Nasa в отдельную директорию.
+
 <img width="93" height="115" alt="image" src="https://github.com/user-attachments/assets/8357cfd5-e4c5-4ddc-805a-196c615d5703" />
 
 -**EPIC**(limit,nasa_api_key): скачивает снимки нашей планеты с сайта Nasa в отдельную директорию.
+
 <img width="118" height="127" alt="image" src="https://github.com/user-attachments/assets/b2495d8f-68bd-4176-888c-9ca756ca3065" />
 
--**tg_bot**(chat_id,time_sleep,bot):создает телеграм бота который сам отправляет фотографии в телеграм-канал, а после того как все оптравит перемешивает их и дальше продолжает
+-**tg_bot**(chat_id,time_sleep,bot):создает телеграм бота который сам отправляет фотографии в телеграм-канал, а после того как все оптравит перемешивает их и дальше продолжает.
+
 <img width="848" height="606" alt="image" src="https://github.com/user-attachments/assets/945c3a6b-f062-41eb-8dba-d4efeddc36fe" />
 
 

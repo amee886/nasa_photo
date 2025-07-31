@@ -11,7 +11,6 @@ def astronomy_picture_of_the_day(nasa_api_key, count):
                 "count": count
         }
         url = f'https://api.nasa.gov/planetary/apod'
-        nasa_apod = "https://apod.nasa.gov/apod/image/2506/IC2177SeagullLRGB-APOD2048.jpg"
         response = requests.get(url, params=params)
         response.raise_for_status()
         json_information = response.json()

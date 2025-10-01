@@ -5,7 +5,7 @@ from datetime import datetime
 from download_gpt import download_photo
 
 
-def download_earth_photo(limit, nasa_api_key):
+def download_earth_photo(max_photos_count, nasa_api_key):
         params={
                 "api_key": nasa_api_key
                 }
@@ -29,8 +29,10 @@ def download_earth_photo(limit, nasa_api_key):
 
 def main():
     nasa_api_key = config("NASA_API_KEY")
-    download_earth_photo(10, nasa_api_key)
+    max_photos_count = 10
+    download_earth_photo(max_photos_count, nasa_api_key)
 
     
 if __name__ == '__main__':
     main()
+

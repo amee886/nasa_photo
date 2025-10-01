@@ -7,7 +7,7 @@ import argparse
 
 
 def post_images_to_channel(chat_id, time_sleep, bot):
-    photo_dir = r"E:\python\kurs\images\nasa_images"
+    photo_dir = os.path.join(os.path.dirname(__file__), 'nasa_images')
     photos = [os.path.join(photo_dir, f)
               for f in os.listdir(photo_dir)
               if f.lower().endswith(('.jpg', '.png', '.jpeg', '.gif'))]
@@ -24,20 +24,21 @@ def post_images_to_channel(chat_id, time_sleep, bot):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='время между отправлением фотографий')
+    parser = argparse.ArgumentParser(description='Бот сам отправляет фотографии из директории в телеграм канал с определенным промежутком')
     parser.add_argument('time', type=int, help='время между отправлением фотографий в секундах')
     args = parser.parse_args()
     time_sleep = args.time
-    chat_id = "@SpaceXandSpace"
+    chat_id = config("CHAT_ID")
     tg_api_token = config("TG_API_TOKEN")
     bot = telegram.Bot(token=tg_api_token)
     try:
         bot.send_message(chat_id=chat_id, text="Бот запущен и готов к отправке фотографий!")
-    except Exception as e:
+    except telegram.error.TelegramError as e:
         print(f"Не удалось отправить приветственное сообщение: {e}")
-    takeFils(chat_id, time_sleep, bot)
+    sends_photos(chat_id, time_sleep, bot)
 
 
 if __name__ == "__main__":
     main()
+
 

@@ -6,7 +6,7 @@ from decouple import config
 import argparse
 
 
-def takeFils(chat_id, time_sleep, bot):
+def post_images_to_channel(chat_id, time_sleep, bot):
     photo_dir = r"E:\python\kurs\images\nasa_images"
     photos = [os.path.join(photo_dir, f)
               for f in os.listdir(photo_dir)
@@ -40,3 +40,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -1,20 +1,20 @@
+import requests
 import os
 from decouple import config
 from datetime import datetime
-from download import download_earth_photo
+from download_gpt import download_photo
 
 
-def earth_polychromatic_imaging_camera(limit, nasa_api_key):
+def download_earth_photo(limit, nasa_api_key):
         params={
                 "api_key": nasa_api_key
                 }
         url_epic = f"https://api.nasa.gov/EPIC/api/natural/images"
         response = requests.get(url_epic,params=params)
         response.raise_for_status()
-        json_information = response.json()
-        os.makedirs("EPIC_images", exist_ok=True)
-        for index_photo, earth_photo in enumerate(json_information):
-                if index_photo >= limit:
+        gets_dictionary = response.json()
+        for photo_index, earth_photo in enumerate(gets_dictionary):
+                if photo_index >= limit:
                         break
 
                 image_name = earth_photo.get("image")
@@ -23,17 +23,14 @@ def earth_polychromatic_imaging_camera(limit, nasa_api_key):
                 year_photo=date_imaging.year
                 month_photo=date_imaging.month
                 day_photo=date_imaging.day
-                params={
-                        "api_key": nasa_api_key
-                }
-                created_url = f"https://api.nasa.gov/EPIC/archive/natural/{year_photo:04d}/{month_photo:02d}/{day_photo:02d}/png/{image_name}.png"
-                download_earth_photo(created_url, index_photo,params)
+                image_url = f"https://api.nasa.gov/EPIC/archive/natural/{year_photo:04d}/{month_photo:02d}/{day_photo:02d}/png/{image_name}.png"
+                download_photo(image_url, photo_index,params)
 
 
 def main():
     nasa_api_key = config("NASA_API_KEY")
-    earth_polychromatic_imaging_camera(10, nasa_api_key)
+    download_earth_photo(10, nasa_api_key)
 
-
+    
 if __name__ == '__main__':
     main()

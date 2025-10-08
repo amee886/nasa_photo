@@ -5,7 +5,7 @@ from urllib.parse import urlsplit
 from download_gpt import download_photo
 
 
-def download_astronomy_photo(nasa_api_key, count):
+def downloads_astronomical_photos(nasa_api_key, count):
         params = {
                 "api_key": nasa_api_key,
                 "count": count
@@ -23,11 +23,12 @@ def download_astronomy_photo(nasa_api_key, count):
 def main():
         count = 30
         nasa_api_key = config("NASA_API_KEY")
-        download_astronomy_photo(nasa_api_key, count)
+        downloads_astronomical_photos(nasa_api_key, count)
 
         
 if __name__ == '__main__':
     main()
+
 
 
 

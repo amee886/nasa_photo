@@ -6,7 +6,7 @@ from download_gpt import download_photo
 def download_launch_photo(launch_id):
         params = {
                 "launch_id": launch_id
-                }
+        }
         url = f'https://api.spacexdata.com/v5/launches/{launch_id}'
         response = requests.get(url)
         response.raise_for_status()
@@ -27,5 +27,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 

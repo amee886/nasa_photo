@@ -28,7 +28,7 @@ def main():
     parser.add_argument('time', type=int, help='время между отправлением фотографий в секундах')
     args = parser.parse_args()
     time_sleep = args.time
-    chat_id = config("CHAT_ID")
+    chat_id = config("TG_CHAT_ID")
     tg_api_token = config("TG_API_TOKEN")
     bot = telegram.Bot(token=tg_api_token)
     try:
@@ -40,5 +40,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 

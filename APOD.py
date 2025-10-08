@@ -14,7 +14,7 @@ def download_astronomy_photo(nasa_api_key, count):
         response = requests.get(url, params=params)
         response.raise_for_status()
         decoded_response = response.json()
-        for photo_index, astronomy_photo in enumerate(gets_dictionary):
+        for photo_index, astronomy_photo in enumerate(decoded_response):
             image_url = astronomy_photo.get('url')
             if image_url and (image_url.endswith(".jpg") or image_url.endswith(".png")):
                 download_photo(image_url, photo_index,params)
@@ -28,5 +28,6 @@ def main():
         
 if __name__ == '__main__':
     main()
+
 
 

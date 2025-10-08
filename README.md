@@ -19,18 +19,38 @@ git clone https://github.com/amee886/nasa_photo.git cd nasa_photo
 
 <img width="497" height="101" alt="image" src="https://github.com/user-attachments/assets/f4e2a309-96bd-4a33-8991-7436d7427448" />
 
+```bach
+   python fetch_spacex_last_launch.py
+```
+
 -**APOD**(nasa_api_key): скачивает лучшие снимки дня с сайта Nasa в отдельную директорию.
 
 <img width="396" height="147" alt="image" src="https://github.com/user-attachments/assets/79e89b8c-943d-4e9f-8e99-440135847b40" />
 
+```bach
+   python APOD.py
+```
+
 -**EPIC**(limit,nasa_api_key): скачивает снимки нашей планеты с сайта Nasa в отдельную директорию.
 
-
+```bach
+   python EPIC.py
+```
 
 -**tg_bot**(chat_id,time_sleep,bot):создает телеграм бота который сам отправляет фотографии в телеграм-канал, а после того как все оптравит перемешивает их и дальше продолжает.
 
 <img width="848" height="606" alt="image" src="https://github.com/user-attachments/assets/945c3a6b-f062-41eb-8dba-d4efeddc36fe" />
 
+x=время между отправкой фотографий
+
+```bach
+   python tg_bot.py x
+```
+-**download**(image_url, photo_index, params=None, prefix="image", save_dir="downloaded_images", ext="jpg"): скачивает все фотографии в одну папку.\
+
+```bach
+   python download.py
+```
 
 ## 3. Получите API Nasa
 Вам нужно будет зарегестрироваться на сайте NASA и получить API_key.Для этого выполните следующие шаги:

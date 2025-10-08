@@ -35,11 +35,12 @@ def main():
         bot.send_message(chat_id=chat_id, text="Бот запущен и готов к отправке фотографий!")
     except telegram.error.TelegramError as e:
         print(f"Не удалось отправить приветственное сообщение: {e}")
-    sends_photos(chat_id, time_sleep, bot)
+    post_images_to_channel(chat_id, time_sleep, bot)
 
 
 if __name__ == "__main__":
     main()
+
 
 
 

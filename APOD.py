@@ -11,7 +11,6 @@ def download_astronomy_photo(nasa_api_key, count):
                 "count": count
         }
         url = f'https://api.nasa.gov/planetary/apod'
-        nasa_apod = "https://apod.nasa.gov/apod/image/2506/IC2177SeagullLRGB-APOD2048.jpg"
         response = requests.get(url, params=params)
         response.raise_for_status()
         gets_dictionary = response.json()
@@ -29,3 +28,4 @@ def main():
         
 if __name__ == '__main__':
     main()
+

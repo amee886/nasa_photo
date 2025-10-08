@@ -43,7 +43,10 @@ git clone https://github.com/amee886/nasa_photo.git cd nasa_photo
 
    
 NASA_API_KEY=ваш ключ NASA
+
 TG_API_TOKEN=токен вашего бота
+
+TG_CHAT_ID=id вашего телеграмм канала
 
 ## 5. Канал
 

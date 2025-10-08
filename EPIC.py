@@ -12,8 +12,8 @@ def download_earth_photo(max_photos_count, nasa_api_key):
         url_epic = f"https://api.nasa.gov/EPIC/api/natural/images"
         response = requests.get(url_epic,params=params)
         response.raise_for_status()
-        gets_dictionary = response.json()
-        for photo_index, earth_photo in enumerate(gets_dictionary):
+        decoded_response = response.json()
+        for photo_index, earth_photo in enumerate(decoded_response):
                 if photo_index >= limit:
                         break
 
@@ -35,4 +35,5 @@ def main():
     
 if __name__ == '__main__':
     main()
+
 

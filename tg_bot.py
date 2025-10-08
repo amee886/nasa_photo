@@ -17,8 +17,10 @@ def post_images_to_channel(chat_id, time_sleep, bot):
             try:
                 with open(photo_path, 'rb') as photo:
                     bot.send_photo(chat_id=chat_id, photo=photo)
-            except Exception as e:
-                print(f"Ошибка при отправке {photo_path}: {e}")
+            except telegram.error.NetworkError as e:
+                print(f"Сетевая ошибка при отправке {photo_path}: {e}")
+            except FileNotFoundError:
+                print(f"Файл не найден: {photo_path}")
             time.sleep(time_sleep)
         random.shuffle(photos)
 
@@ -40,6 +42,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
